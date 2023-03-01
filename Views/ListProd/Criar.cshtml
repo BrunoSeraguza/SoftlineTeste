@@ -1,0 +1,42 @@
+﻿@model ProdutoModel //Importando a View
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Cadastrar Produtos</h1>
+
+</div>
+<form asp-controller="ListProd" asp-action="Criar" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Descrição</label>
+        <input type="text" asp-for="Descricao" class="form-control" placeholder="Digite a descrição do produto">
+        @Html.ValidationMessageFor(x => x.Descricao)
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Código de barras</label>
+        <input type="text" asp-for="CodigoDeBarras" class="form-control" placeholder="Digite o código de barras do produto">
+        @Html.ValidationMessageFor(x => x.CodigoDeBarras)
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Valor da venda</label>
+        <input type="text" asp-for="valorVenda" class="form-control" placeholder="Digite o valor da venda do produto">
+        @Html.ValidationMessageFor(x => x.valorVenda)
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Peso bruto</label>
+        <input type="text" asp-for="PesoBruto" class="form-control" placeholder="Digite o peso bruto do produto">
+        @Html.ValidationMessageFor(x => x.PesoBruto)
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Peso liquido</label>
+        <input type="text" asp-for="PesoLiquido" class="form-control" placeholder="Digite o peso liquido do produto">
+        @Html.ValidationMessageFor(x => x.PesoLiquido)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a class="btn btn-secondary" asp-controller="ListProd" asp-action="Index" role="button">Voltar</a>
+</form>

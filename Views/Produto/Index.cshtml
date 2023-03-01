@@ -1,0 +1,38 @@
+﻿@model List<ProdutoModel>
+@{
+    ViewData["Title"] = "Cadastro de produto";
+}
+<h1 class="display-4">Cadastro de produtos</h1>
+
+<table class="table" id="table-produtos">
+    <thead>
+        <tr>
+            <th scope="col">Cod</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Código de barras</th>
+            <th scope="col">Valor da venda</th>
+            <th scope="col">Peso bruto</th>
+            <th scope="col">Peso liquido</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var produto in Model)
+            {
+                <tr>
+                    <th scope="row">@produto.Id</th>
+                    <td>@produto.Descricao</td>
+                    <td>@produto.CodigoDeBarras</td>
+                    <td>@produto.valorVenda</td>
+                    <td>@produto.PesoBruto</td>
+                    <td>@produto.PesoLiquido</td>
+                   
+
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

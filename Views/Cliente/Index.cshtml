@@ -1,0 +1,37 @@
+﻿@model List<ClienteModel>
+@{
+    ViewData["Title"] = "Cadastro de clientes";
+}
+<h1 class="display-4">Cadastro de Clientes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Cod</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Fantasia</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Endereco</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (ClienteModel cliente in Model)
+            {
+                <tr>
+                    <th scope="row">@cliente.Id</th>
+                    <td>@cliente.Nome</td>
+                    <td>@cliente.Fantasia</td>
+                    <td>@cliente.Documento</td>
+                    <td>@cliente.Endereco</td>
+                  
+
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+

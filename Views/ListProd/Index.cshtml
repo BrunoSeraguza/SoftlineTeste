@@ -1,0 +1,69 @@
+﻿@model List<ProdutoModel>
+@{
+    ViewData["Title"] = "Listagem de Produtos";
+}
+<div class="text-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="ListProd" asp-action="Criar">Adicionar Novo Produto</a>
+    </div>
+    <br />
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert " arial-label="close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemError"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert " arial-label="close">X</button>
+            @TempData["MensagemError"]
+        </div>
+
+    }
+    <br />
+
+    <h1 class="display-4">Listagem de Produtos</h1>
+
+    <table class="table" id="table-produtos">
+        <thead>
+            <tr>
+                <th scope="col">Cod</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Código de barras</th>
+                <th scope="col">Valor da venda</th>
+                <th scope="col">Peso bruto</th>
+                <th scope="col">Peso liquido</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null && Model.Any())
+            {
+                foreach (var produto in Model)
+                {
+                    <tr>
+                        <th scope="row">@produto.Id</th>
+                        <td>@produto.Descricao</td>
+                        <td>@produto.CodigoDeBarras</td>
+                        <td>@produto.valorVenda</td>
+                        <td>@produto.PesoBruto</td>
+                        <td>@produto.PesoLiquido</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@produto.Id" asp-controller="ListProd" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@produto.Id" asp-controller="ListProd" asp-action="Apagar">Apagar</a>
+                              
+                            </div>
+                        </td>
+
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+
+</div>
